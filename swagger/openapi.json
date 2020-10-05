@@ -1,0 +1,42 @@
+{
+  "info": {
+    "description": "API service for finding the fastest mirror from the list of given mirror sites",
+    "title": "Mirror Finder Service",
+    "version": "0.1.1"
+  },
+  "openapi": "3.0.0",
+  "paths": {
+    "/fastest-mirror": {
+      "get": {
+        "description": "This call returns data of fastest reachable mirror site",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "fastest_mirror": {
+                      "type": "string"
+                    },
+                    "latency": {
+                      "type": "integer"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "A JSON object of details"
+          }
+        },
+        "summary": "Returns a fastest mirror site."
+      }
+    }
+  },
+  "servers": [
+    {
+      "description": "Development server[Staging/Production are different from this]",
+      "url": "http://localhost:3000"
+    }
+  ]
+}

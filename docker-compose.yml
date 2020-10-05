@@ -1,0 +1,23 @@
+version: "3.8"
+services:
+  open_api:
+    tty: true
+    container_name: SWAGGER
+    build:
+      context: ./swagger
+    ports:
+      - 3001:8080
+    volumes:
+      - ./swagger:/swagger
+    depends_on:
+      backend:
+        condition: service_started
+  backend:
+    tty: true
+    container_name: BACKEND
+    build:
+      context: ./backend
+    ports:
+      - 3000:3000
+    volumes:
+      - ./backend:/go/src/webapp/backend
